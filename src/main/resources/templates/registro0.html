@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" th:href="@{/css/estilosRegistro.css}" type="text/css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Teach me!</title>
+
+</head>
+
+<body>
+    <form class="formulario" action="/crearCuenta/" method="POST" th:object="${formulario}">
+       
+        <div class="contenedor">
+        <h1>Registrate en Teach me!</h1>
+        <br>
+        <div class="input-contenedor">
+                <i class="fas fa-user icon"></i>
+                <input type="text" th:field="*{campo1}" placeholder="Ingrese su nombre"><br>
+        </div>
+        <div class="input-contenedor">
+                <i class="fas fa-user icon"></i>
+                <input type="text" th:field="*{campo2}" placeholder="Ingrese su apellido"><br>
+        </div>
+
+        <div class="input-contenedor">
+                <i class="fas fa-user icon"></i>
+                <input type="text" th:field="*{campo3}" placeholder="Ingrese código"><br>
+        </div>
+            
+        <div class="input-contenedor">
+                        <label for="">Selecione el tipo de usuario:</label> <br>
+
+                        <input type="radio" value="Alumno" th:field="*{campo4}" name="usuario" id="alumno">
+                        <label for="alumno">Alumno</label>
+
+                        <input type="radio" value="Profesor" th:field="*{campo4}" name="usuario" id="profesor">
+                        <label for="profesor">Profesor</label><br>
+        </div>
+        <div class="input-contenedor">
+                        <i class="fas fa-envelope icon"></i>
+                        <input type="text" th:field="*{campo5}" placeholder="Ingrese su nombre de usuario"><br>
+        </div>
+        <div class="input-contenedor">
+                        <i class="fas fa-key icon"></i>
+                        <input type="password" th:field="*{campo6}" placeholder="Ingrese su contraseña"><br>
+        <input type="submit" value="Registrar" class="button_1">
+        </div>
+        </div>
+    </form>
+    <form action="/crearCuenta/formu" method="POST">
+        
+            <p>Al registrarte aceptas nuestras Condiciones de uso y Politicas de Privacidad</p>
+            <p>¿Ya tienes cuenta?<button type="submit"><a>Iniciar Sesion</a></button></p>
+    </form>
+</body>
+
+</html>

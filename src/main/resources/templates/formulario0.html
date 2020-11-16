@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Teach me!</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Ejemplo HTML5">
+    <meta name="keywords" content="Clases, Asesorias, Universidad">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/estilos.css}" type="text/css"/>
+
+</head>
+
+<body>
+    <header>
+        <div class="container text-light">
+            <h1>Bienvenido a Teach Me!</h1>
+        </div>
+    </header>
+    <br>
+
+    <div class="modal-dialog text-center">
+        <div class="col-sm-10 cajaPrincipal">
+            <div class="modal-content">
+                <h1>Inicio de sesión</h1>
+                <br>
+                <form action="/" method="POST"  th:object="${formulario}" id="formulario" >
+                    <div class="form-group">
+                        <input type="text" th:field="*{campo1}" class="form-control" placeholder="Ingrese su usuario"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" th:field="*{campo2}" class="form-control" placeholder="Ingrese su contraseña"/>
+                    </div>
+                    <button type="submit" class="btn btn-info">Iniciar sesión</button>
+                    <p>¿No tienes una cuenta?</p>
+                </form>
+                <form action="/reg" method="POST">
+                    <div class="col-12"></div>
+                        <a><button type="submit">Registrate</button></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>

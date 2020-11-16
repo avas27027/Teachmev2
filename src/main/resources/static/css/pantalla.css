@@ -1,0 +1,46 @@
+.body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.header{
+    text-align: center;
+    height: 300px;
+    padding: 12px;
+    background-image: url(https://hipertextual.com/files/2017/03/color-degradado-fondos-degradados-multicolor-51200.jpg);
+}
+.estilo{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.user_name{
+    font-size: 18px;
+    margin-top: 14px;
+}
+.redes{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+.redes li {
+    display: inline-block;
+    margin: 5px;
+}
+a{
+    text-decoration: none;
+    color:indigo;
+}
+a:hover{
+    color: indianred;
+}
+.icon{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-size:cover;
+}
+.gmail{
+    background-image: url("img/gmail.png");
+}
+.ulima{
+    background-image: url("img/universidad.png");
+}

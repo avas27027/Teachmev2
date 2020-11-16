@@ -1,0 +1,44 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: url(../img/lugar-de-estudio.jpg) no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.modal-content{
+    width: 90%;
+    padding: 10px;
+    text-align: center;
+
+}
+
+.formulario{
+    margin: 0 auto;
+    margin-top: 2%;
+    padding: 2px;
+}
+
+h1{
+    text-align: center;
+    color: dimgray;
+    font-size: 35px;
+}
+input[type="text"],input[type="password"]{
+    font-size: 20px;
+    width: 82%;
+    padding: 10px;
+    border: none;
+}
+.icon{
+    min-width: 50px;
+    text-align: center;
+    color: #999;
+}
+.button{
+    background-color:darkslategray;
+    border: none;
+    width: 50%;
+    color: white;
+    font-size: 20px;
+    align-self: center;
+}
