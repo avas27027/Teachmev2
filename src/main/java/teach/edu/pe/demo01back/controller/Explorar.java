@@ -32,13 +32,13 @@ public class Explorar{
         
         System.out.print(tipo+" | "+busqueda+"\n");
         if(tipo.equals("1")){// 1 es clase 2 es profesor
-            List<Clase> clasesC=cRep.findByNombreAndEstado(busqueda, true);
+            List<Clase> clasesC=cRep.findByNombreContainingIgnoreCaseAndEstado(busqueda, true);
             // Se imprimen los valores que encuentra, colocar estos valores en el html
             model.addAttribute("clases",clasesC);
             System.out.println("------------------");
             System.out.println(clasesC.get(0).nombre);
         }else{
-            List<Clase> clasesC=cRep.findByProfesorAndEstado(busqueda,true);
+            List<Clase> clasesC=cRep.findByProfesorContainingIgnoreCaseAndEstado(busqueda,true);
             // Se imprimen los valores que encuentra, colocar estos valores en el html
             model.addAttribute("clases",clasesC);
         }
