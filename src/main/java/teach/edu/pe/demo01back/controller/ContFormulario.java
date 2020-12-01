@@ -33,6 +33,7 @@ public class ContFormulario{
             req.getSession().setAttribute("nombre", user.getNombre());
             req.getSession().setAttribute("apellido", user.getApellido());
             req.getSession().setAttribute("usuario", user.getUsuario());
+            //req.getSession().setAttribute("usuarid", user.getID());
             return "redirect:/home/";
         }
         System.out.print("*Usuario o contraseña incorrecta*");

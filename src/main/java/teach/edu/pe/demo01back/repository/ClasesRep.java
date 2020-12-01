@@ -10,10 +10,11 @@ public interface ClasesRep extends JpaRepository<Clase,Long>{
     public List<Clase> findByNombre(String nombre);
     public List<Clase> findByProfesor(String profesor);
     public List<Clase> findByAlumno(String alumno);
+    public Clase findByIde(Long ide);
     //@Query("SELECT c FROM TBCLASES c WHERE UPPER(c.nombre) LIKE UPPER(%:nombre1%) AND c.estado=:estado1")
     public List<Clase> findByNombreContainingIgnoreCaseAndEstado(String nombre,boolean estado);
     public List<Clase> findByProfesorContainingIgnoreCaseAndEstado(String profesor, boolean estado);
     @Transactional
-    public long deleteByID(Long ID);
+    public long deleteByIde(Long ide);
 
 }

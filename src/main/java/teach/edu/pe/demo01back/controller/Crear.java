@@ -16,7 +16,7 @@ import teach.edu.pe.demo01back.repository.ClasesRep;
 @Controller
 @RequestMapping("/crear")
 public class Crear {
-     private ClasesRep cRep;
+    private ClasesRep cRep;
     @Autowired
     public void claseController(ClasesRep cRep){
         this.cRep = cRep;
@@ -34,6 +34,7 @@ public class Crear {
             return "redirect:/crearCuenta/";
         }*/
         String usuario= String.valueOf(req.getSession().getAttribute("usuario"));
+        //String usuarioId= String.valueOf(req.getSession().getAttribute("usuarid"));
         Clase clase =  new Clase();
         clase.setPrecio(fc.camp1);
         clase.setNombre(fc.camp2);
@@ -42,6 +43,7 @@ public class Crear {
         clase.setRubro(fc.camp4);
         clase.setEstado(true);
         clase.setProfesor(usuario);
+        //clase.setUsuarid(Integer.parseInt(usuarioId));
         cRep.saveAndFlush(clase);
         
         System.out.printf("Clase creada: ", clase);

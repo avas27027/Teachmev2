@@ -7,4 +7,6 @@ import teach.edu.pe.demo01back.model.Usuarios;
 public interface UsuariosRep extends JpaRepository<Usuarios,Long>{
     public Usuarios findByUsuarioAndContrasenia(String usuario, String contrasenia);
     public Usuarios findByUsuario(String usuario);
+    public Usuarios findByNombreContainingIgnoreCase(String nombre);
+    
 }

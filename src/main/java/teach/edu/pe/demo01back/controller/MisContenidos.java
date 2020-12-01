@@ -45,7 +45,7 @@ public class MisContenidos {
     public String borrarClase(@PathVariable("y") String y){
         System.out.println(y);
         Long y1 = Long.parseLong(y);
-        cRep.deleteByID(y1);
+        cRep.deleteByIde(y1);
         return "redirect:/misContenidos/";
     }
 

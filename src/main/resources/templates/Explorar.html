@@ -91,7 +91,10 @@
                             <td th:text="${x.rubro}">mate</td>
 
                             <td>
-                                <a class="btn btn-success btn-sm" href="/Pago/" >Matricular</a>
+                                <!--<a class="btn btn-success btn-sm" href="/Pago/" >Matricular</a>-->
+                                <form method="POST" th:action="@{/explorar/seleccionar/{y} (y=${x.ide}) }">
+                                    <button class="btn btn-success btn-sm" type="submit" >Matricular</button>
+                                </form>
                             </td>
                             <!--<td>
                                 <form>

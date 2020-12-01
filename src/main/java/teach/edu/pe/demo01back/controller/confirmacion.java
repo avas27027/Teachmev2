@@ -15,14 +15,7 @@ public class confirmacion {
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String getIndex(){     
         return "confirmacion";
-}
+    }
     
-    /* @RequestMapping(value = "/delete/{y}", method = RequestMethod.POST)
-    public String borrarClase(@PathVariable("y") String y){
-        System.out.println(y);
-        Long y1 = Long.parseLong(y);
-        cRep.deleteByID(y1);
-        return "redirect:/home/";
-    }*/
 }
 

@@ -80,7 +80,7 @@
                       Horario: <p th:text="${x.horario}"> 09:00HRS-11:00HRS</p> --> 
                     
                     <td>
-                      <form method="POST" th:action="@{/misContenidos/delete/{y} (y=${x.ID}) }">
+                      <form method="POST" th:action="@{/misContenidos/delete/{y} (y=${x.ide}) }">
                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                       </form>
                     </td>
