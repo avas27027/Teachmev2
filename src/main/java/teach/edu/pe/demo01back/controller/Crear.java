@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 import java.util.Locale;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,11 @@ public class Crear {
     }
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String getIndex(Model model){
-        model.addAttribute("formuClase",new FormuClase());
+        SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm",Locale.UK);
+        String hoy = formateador.format(Calendar.getInstance().getTime());
+        FormuClase form = new FormuClase();
+        form.camp5=hoy;
+        model.addAttribute("formuClase",form);
         return "Crear";
 }
     
@@ -48,7 +53,9 @@ public class Crear {
                 return "/crear/";
             }
         }
+        if(compFec(fc.camp3)){
 
+        }
         Clase clase =  new Clase();
         clase.setPrecio(fc.camp1);
         clase.setNombre(fc.camp2);
@@ -79,6 +86,27 @@ public class Crear {
             System.out.println("error de fecha\t"+e);
         }
         return fec;
+    }
+    public boolean compFec(String a){
+        //SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm",Locale.UK);
+        SimpleDateFormat formateador2 = new SimpleDateFormat("dd/mm/yyyy hh:mm a");  
+        String a1 = convFec(a);
+        Date a1D;
+        
+        String hoy=formateador2.format(Calendar.getInstance().getTime());
+        Date hoyD;
+
+        try {
+            a1D = formateador2.parse(a1);
+            hoyD = formateador2.parse(hoy);
+            if(a1D.after(hoyD)){
+                return true;
+            }
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
     }
      
 }

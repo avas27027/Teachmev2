@@ -10,4 +10,5 @@ public class FormuClase implements Serializable {
      public String camp2;
      public String camp3;
      public String camp4; 
+     public String camp5;
 }
