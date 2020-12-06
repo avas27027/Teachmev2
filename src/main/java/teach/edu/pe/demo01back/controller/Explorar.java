@@ -16,44 +16,74 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/explorar")
-public class Explorar{
+//@RequestMapping({"/explorar"})
+public class Explorar {
+    @Autowired
     private ClasesRep cRep;
     private UsuariosRep uRep;
-    @Autowired
-    public void userController(ClasesRep cRep, UsuariosRep uRep){
+
+    
+    public void userController(ClasesRep cRep, UsuariosRep uRep) {
         this.cRep = cRep;
         this.uRep = uRep;
     }
+    
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String getIndex() {
+        return "Explorar";
+    }
+    
+   
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String getIndex(){
-        return "Explorar";
-    }
     
-    @RequestMapping(value = "/",method = RequestMethod.POST)
-    public String buscar(Model model,String tipo, String busqueda){
-        
-        System.out.print(tipo+" | "+busqueda+"\n");
-        if(tipo.equals("1")){// 1 es clase 2 es profesor
-            List<Clase> clasesC=cRep.findByNombreContainingIgnoreCaseAndEstado(busqueda, true);
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public String buscar(Model model, String tipo, String busqueda, HttpServletRequest req) {
+        String usuario = String.valueOf(req.getSession().getAttribute("usuario"));
+
+        System.out.print(tipo + " | " + busqueda + "\n");
+        if (tipo.equals("1")) {// 1 es clase 2 es profesor
+            List<Clase> clasesC = cRep.findByNombreContainingIgnoreCaseAndEstado(busqueda, true);
             // Se imprimen los valores que encuentra, colocar estos valores en el html
-            model.addAttribute("clases",clasesC);
-            System.out.println("------------------");
-            System.out.println(clasesC.get(0).nombre);
-        }else{
+            List<Clase> claseUsuario = cRep.findByProfesor(usuario);
+            System.out.println("///////////////////////////////////////////////////////////////////////");
+            System.out.println(usuario);
+            System.out.println(claseUsuario);
+
+            try {
+                //interceptor.invoke(invocation);
+                clasesC.removeIf(n -> (n.getProfesor().equals(usuario)));
+                model.addAttribute("clases", clasesC);
+                //System.out.println("------------------");
+                System.out.println(clasesC.get(0).nombre);
+            } catch (IndexOutOfBoundsException ex) {
+                // expected
+                System.out.println("NO PUEDE SER");
+                return "error_borrar";
+            }
+
+        } else {
             Usuarios usua = uRep.findByNombreContainingIgnoreCase(busqueda);
-            List<Clase> clasesC=cRep.findByProfesorContainingIgnoreCaseAndEstado(usua.getUsuario(), true);
-            
+            List<Clase> clasesC = cRep.findByProfesorContainingIgnoreCaseAndEstado(usua.getUsuario(), true);
+
             // Se imprimen los valores que encuentra, colocar estos valores en el html
-            model.addAttribute("clases",clasesC);
+            try {
+                clasesC.removeIf(n -> (n.getProfesor().equals(usuario)));
+                model.addAttribute("clases", clasesC);
+            } catch (IndexOutOfBoundsException ex) {
+                // expected
+                System.out.println("NO PUEDE SER");
+                return "error_borrar";
+            }
+
         }
-        
+
         return "Explorar";
     }
-    
+
+   
     @RequestMapping(value = "/seleccionar/{y}", method = RequestMethod.POST)
-    public String seleccionarClase(@PathVariable("y") String y){
-        
+    public String seleccionarClase(@PathVariable("y") String y) {
+
         System.out.println("**************************************************");
         System.out.println(y);
         Long y1 = Long.parseLong(y);
