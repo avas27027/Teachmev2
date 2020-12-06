@@ -10,6 +10,18 @@
 
         <link rel="stylesheet" th:href="@{../css/style.css}">
     </head>
+    
+    <script type="text/javascript">
+          function ConfirmPago(){
+              var respuesta = confirm("Seguro que desa matricularse?");
+              if(respuesta === true){
+                  return true;
+              }else{
+                  return false;
+              }
+          }
+      </script>
+    
     <body>
 
         <div class="main">
@@ -48,7 +60,7 @@
                                    
                                     
                                     
-                                    <input type="submit" name="pg" id="pg" class="form-submit" value="Matricular"/>
+                                    <input type="submit" name="pg" id="pg" class="form-submit" onclick="return ConfirmPago()" value="Matricular"/>
                                    
                                 </div>
 
