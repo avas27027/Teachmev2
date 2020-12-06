@@ -1,5 +1,12 @@
 
 package teach.edu.pe.demo01back.controller;
+import java.util.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +42,17 @@ public class Crear {
         }*/
         String usuario= String.valueOf(req.getSession().getAttribute("usuario"));
         //String usuarioId= String.valueOf(req.getSession().getAttribute("usuarid"));
+        List<Clase> lHorarios = cRep.findByProfesor(usuario);
+        for (Clase h : lHorarios){
+            if(h.getHorario().equals(convFec(fc.camp3))) {
+                return "/crear/";
+            }
+        }
+
         Clase clase =  new Clase();
         clase.setPrecio(fc.camp1);
         clase.setNombre(fc.camp2);
-        clase.setHorario(fc.camp3);
+        clase.setHorario(convFec(fc.camp3));
         //user.setTipo(f.campo4);
         clase.setRubro(fc.camp4);
         clase.setEstado(true);
@@ -51,5 +65,20 @@ public class Crear {
 
     }
     
+    public String convFec(String num){
+        System.out.println(num);
+        String fec="";
+        SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm",Locale.UK);
+        SimpleDateFormat formateador2 = new SimpleDateFormat("dd/mm/yyyy hh:mm a");
+        try{
+        Date fecha = formateador.parse(num);
+        fec=formateador2.format(fecha);
+        System.out.println(fec);
+        }catch (ParseException e)
+        {
+            System.out.println("error de fecha\t"+e);
+        }
+        return fec;
+    }
      
 }
