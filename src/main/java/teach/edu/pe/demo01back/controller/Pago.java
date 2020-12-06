@@ -11,19 +11,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import teach.edu.pe.demo01back.model.Clase;
+import teach.edu.pe.demo01back.model.Pagar;
 import teach.edu.pe.demo01back.model.FormuClase;
 import teach.edu.pe.demo01back.repository.ClasesRep;
+import teach.edu.pe.demo01back.repository.PagoRep;
 
 
 @Controller
 @RequestMapping("/Pago")
 public class Pago {  
-    private ClasesRep cRep;
     @Autowired
-    public void claseController(ClasesRep cRep){
-        this.cRep = cRep;
-    }
+    private ClasesRep cRep;
+    
+    @Autowired
+    private PagoRep pagoRep;
+    
     
     String id = "";
     @RequestMapping(value = "/{y}",method = RequestMethod.GET)
@@ -33,9 +37,23 @@ public class Pago {
     }
     
     @RequestMapping(value = "/seleccionar/", method = RequestMethod.POST)
-    public String seleccionarClase(HttpServletRequest req){
+    public String seleccionarClase(HttpServletRequest req, @RequestParam("num") String num, 
+            @RequestParam("name") String name, @RequestParam("pass") String pass, 
+            @RequestParam("re_pass") String re_pass){
         String usuario = String.valueOf(req.getSession().getAttribute("usuario"));
         System.out.println("**************************************************");
+        
+        
+        Pagar pagar = new Pagar();
+        pagar.setNumTarjeta(Integer.parseInt(num));
+        pagar.setNombreTitular(name);
+        pagar.setFechaCaducidad(pass);
+        pagar.setContraseña(re_pass);
+        pagar.setUsuario(usuario);
+        pagoRep.saveAndFlush(pagar);
+        
+        
+        
         Clase cla = cRep.findByIde(Long.parseLong(id));
         cla.setEstado(false);
         cla.setAlumno(usuario);
