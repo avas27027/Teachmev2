@@ -26,10 +26,10 @@
                 <br>
                 <form action="/" method="POST"  th:object="${formulario}" id="formulario" >
                     <div class="form-group">
-                        <input type="text" th:field="*{campo1}" class="form-control" placeholder="Ingrese su usuario"/>
+                        <input type="email" th:field="*{campo1}" class="form-control" placeholder="Ingrese su usuario" required/>
                     </div>
                     <div class="form-group">
-                        <input type="password" th:field="*{campo2}" class="form-control" placeholder="Ingrese su contraseña"/>
+                        <input type="password" th:field="*{campo2}" class="form-control" placeholder="Ingrese su contraseña" required/>
                     </div>
                     <button type="submit" class="btn btn-info">Iniciar sesión</button>
                     <p>¿No tienes una cuenta?</p>
