@@ -5,14 +5,13 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import lombok.NoArgsConstructor;
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name="TBUSUARIOS")
 public class Usuarios {
 
-
-    
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Id
     private Long ID;
@@ -23,4 +22,7 @@ public class Usuarios {
     private String tipo;
     private String usuario;
     private String contrasenia;
+    private String url;
+    
+    
 }

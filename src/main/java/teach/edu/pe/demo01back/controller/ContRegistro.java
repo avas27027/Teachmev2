@@ -41,6 +41,7 @@ public class ContRegistro{
         //user.setTipo(f.campo4);
         user.setUsuario(f.campo5);
         user.setContrasenia(f.campo6);
+        user.setUrl(f.campo7);
         uRep.saveAndFlush(user);
         System.out.printf("Usuario creado: ", user);
         return "redirect:/";

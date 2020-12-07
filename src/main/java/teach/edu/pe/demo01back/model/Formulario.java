@@ -11,6 +11,7 @@ public class Formulario implements Serializable {
      public String campo4;
      public String campo5;
      public String campo6;
+     public String campo7;
      
      // Getter & Setter
 }

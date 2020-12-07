@@ -45,36 +45,17 @@
             <h3 class="mt-3 text-secondary">Mi Cuenta</h3>
             <hr>
             <div class="row">
+                
                 <div class="col">
                     <div class="form-group">
-                        <label><strong>Nombre</strong></label>
-                        <p th:text=${nombre}>Jeffrey</p>
-                    </div>
-                </div>
-
-
-                <div class="col">
-                    <div class="form-group">
-                        <label><strong>Apellido Paterno</strong></label>
-                        <p th:text=${apellido}> Jaramillo</p>
+                        <div class="col-4">
+                            <img th:src="@{/images/usuario.png}" class="perfil" width="200" height="190">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label ><strong>Usuario</strong></label>
-                        <p th:text=${usuario}>20150710@aloe.ulima.edu.pe</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label><strong>Contraseña</strong></label>
-                        <input class="form-control"  value="profesional123" type="password" disabled>
-                    </div>
-                </div>
-            </div>
+            
 
             <div class="row"><!--
               <div class="col">
@@ -85,16 +66,11 @@
               </div>-->
                 <div class="col">
                     <div class="form-group">
-                        <label><strong>Estado</strong></label>
-                        <p>Activo</p>
+                        <label><strong>Usuario</strong></label>
+                        <p th:text=${usuario}></p>
                     </div>
                 </div>
             </div>
-           
-                <div class="col-4">
-                    <img <img th:src="@{${url}}" class="perfil" width="200" height="190">
-                </div>
-        
 
 
 
