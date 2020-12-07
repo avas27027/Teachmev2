@@ -17,10 +17,11 @@ public class MiCuenta {
         String nombre=String.valueOf(req.getSession().getAttribute("nombre"));
         String apellido= String.valueOf(req.getSession().getAttribute("apellido"));
         String usuario= String.valueOf(req.getSession().getAttribute("usuario"));
+        String url= String.valueOf(req.getSession().getAttribute("url"));
         model.addAttribute("nombre", nombre);
         model.addAttribute("apellido", apellido);
         model.addAttribute("usuario", usuario);
-
+        model.addAttribute("url",url);
         return "miCuenta";
     }
 }

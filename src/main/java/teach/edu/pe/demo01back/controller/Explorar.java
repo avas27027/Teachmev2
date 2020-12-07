@@ -93,4 +93,21 @@ public class Explorar {
         System.out.println(y1);
         return "redirect:/Pago/" + y;
     }
+    
+    
+    @RequestMapping(value = "/ver/{y}", method = RequestMethod.POST)
+    public String ver(@PathVariable("y") String y, Model model) {
+        Clase clase=  cRep.findByIde(Long.parseLong(y));
+        String usuario= clase.getProfesor();
+        model.addAttribute("usuario", usuario);
+        /*
+        System.out.println("**************************************************");
+        System.out.println(y);
+        Long y1 = Long.parseLong(y);
+        System.out.println(y1);*/
+        return "verCuenta";
+    }
+    
+    
+    
 }
