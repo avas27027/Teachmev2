@@ -62,8 +62,8 @@ public class Explorar {
             }
 
         } else {
-            Usuarios usua = uRep.findByNombreContainingIgnoreCase(busqueda);
-            List<Clase> clasesC = cRep.findByProfesorContainingIgnoreCaseAndEstado(usua.getUsuario(), true);
+            //Usuarios usua = uRep.findByNombreContainingIgnoreCase(busqueda);
+            List<Clase> clasesC = cRep.findByProfesorContainingIgnoreCaseAndEstado(busqueda, true);
 
             // Se imprimen los valores que encuentra, colocar estos valores en el html
             try {

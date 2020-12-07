@@ -41,21 +41,18 @@ public class Crear {
     
     @RequestMapping(value = "/",method = RequestMethod.POST)
     public String ingresar(@ModelAttribute FormuClase fc, HttpServletRequest req){
-        /*if(cRep.findByUsuario(f.campo5)!=null){
-            System.out.printf("Usuario ya existente:\n",uRep.findByUsuario(f.campo5));
-            return "redirect:/crearCuenta/";
-        }*/
+
         String usuario= String.valueOf(req.getSession().getAttribute("usuario"));
-        //String usuarioId= String.valueOf(req.getSession().getAttribute("usuarid"));
+        
+        //Buscar horarios iguales
         List<Clase> lHorarios = cRep.findByProfesor(usuario);
         for (Clase h : lHorarios){
             if(h.getHorario().equals(convFec(fc.camp3))) {
-                return "/crear/";
+                return "redirect:/crear/";
             }
         }
-        if(compFec(fc.camp3)){
 
-        }
+        //crear clase
         Clase clase =  new Clase();
         clase.setPrecio(fc.camp1);
         clase.setNombre(fc.camp2);
@@ -88,7 +85,7 @@ public class Crear {
         return fec;
     }
     public boolean compFec(String a){
-        //SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm",Locale.UK);
+        
         SimpleDateFormat formateador2 = new SimpleDateFormat("dd/mm/yyyy hh:mm a");  
         String a1 = convFec(a);
         Date a1D;
