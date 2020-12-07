@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="cod"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="number" th:field="*{campo3}" name="codigo" id="cod" placeholder="Codigo" required/>
+                                <input type="number" min="1" pattern="^[0-9]+" th:field="*{campo3}" name="codigo" id="cod" placeholder="Codigo" required/>
                             </div>
                             <div class="form-group">
                                 <label for="cod"><i class="zmdi zmdi-lock"></i></label>

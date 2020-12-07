@@ -47,7 +47,7 @@
             <form method="POST" action="/crear/" th:object="${formuClase}">
                 <div class="form-group">
                     <label for="formacion-Código"></label>
-                    <input class="form-control" th:field="*{camp1}" required max="2020" type="text" placeholder="Precio"  >
+                    <input class="form-control" th:field="*{camp1}" required max="2020" type="number" min="1" pattern="^[0-9]+" placeholder="Precio"  >
                 </div>
                 <div class="form-group">
                     <label for="formacion-Código"></label>        
