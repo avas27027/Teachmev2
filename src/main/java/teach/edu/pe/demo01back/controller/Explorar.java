@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.PathVariable;
+import teach.edu.pe.demo01back.controller.Crear;
 
 @Controller
 @RequestMapping("/explorar")
@@ -39,7 +40,7 @@ public class Explorar {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String buscar(Model model, String tipo, String busqueda, HttpServletRequest req) {
         String usuario = String.valueOf(req.getSession().getAttribute("usuario"));
-
+        Crear crea=new Crear();
         System.out.print(tipo + " | " + busqueda + "\n");
         if (tipo.equals("1")) {// 1 es clase 2 es profesor
             List<Clase> clasesC = cRep.findByNombreContainingIgnoreCaseAndEstado(busqueda, true);
@@ -52,6 +53,7 @@ public class Explorar {
             try {
                 //interceptor.invoke(invocation);
                 clasesC.removeIf(n -> (n.getProfesor().equals(usuario)));
+                clasesC.removeIf(n -> (!crea.compFec(n.getHorario())));
                 model.addAttribute("clases", clasesC);
                 //System.out.println("------------------");
                 System.out.println(clasesC.get(0).nombre);
@@ -68,6 +70,7 @@ public class Explorar {
             // Se imprimen los valores que encuentra, colocar estos valores en el html
             try {
                 clasesC.removeIf(n -> (n.getProfesor().equals(usuario)));
+                clasesC.removeIf(n -> (!crea.compFec(n.getHorario())));
                 model.addAttribute("clases", clasesC);
             } catch (IndexOutOfBoundsException ex) {
                 // expected

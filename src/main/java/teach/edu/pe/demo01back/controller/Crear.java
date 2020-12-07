@@ -97,12 +97,14 @@ public class Crear {
             a1D = formateador2.parse(a1);
             hoyD = formateador2.parse(hoy);
             if(a1D.after(hoyD)){
+                //devuelve true cuando la fecha ingresada es mayor a la de hoy
                 return true;
             }
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        //devuelve false cuando la fecha ingresada es menor a la de hoy
         return false;
     }
      
