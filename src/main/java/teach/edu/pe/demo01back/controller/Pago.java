@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -31,8 +32,12 @@ public class Pago {
     
     String id = "";
     @RequestMapping(value = "/{y}",method = RequestMethod.GET)
-    public String getIndex(@PathVariable("y") String y){
+    public String getIndex(Model model, @PathVariable("y") String y){
         id = y;
+        Clase clase = cRep.findByIde(Long.parseLong(id));
+        String precio = clase.getPrecio();
+        System.out.println(precio);
+        model.addAttribute("precio", precio);
         return "Pago";
     }
     
@@ -42,8 +47,7 @@ public class Pago {
             @RequestParam("re_pass") String re_pass){
         String usuario = String.valueOf(req.getSession().getAttribute("usuario"));
         System.out.println("**************************************************");
-        
-        
+                
         Pagar pagar = new Pagar();
         pagar.setNumTarjeta(Integer.parseInt(num));
         pagar.setNombreTitular(name);
