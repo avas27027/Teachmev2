@@ -73,7 +73,7 @@ public class Crear {
         System.out.println(num);
         String fec="";
         SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm",Locale.UK);
-        SimpleDateFormat formateador2 = new SimpleDateFormat("dd/mm/yyyy hh:mm a");
+        SimpleDateFormat formateador2 = new SimpleDateFormat("dd/mm/yyyy HH:mm");
         try{
         Date fecha = formateador.parse(num);
         fec=formateador2.format(fecha);
@@ -86,7 +86,7 @@ public class Crear {
     }
     public boolean compFec(String a){
         
-        SimpleDateFormat formateador2 = new SimpleDateFormat("dd/mm/yyyy hh:mm a");  
+        SimpleDateFormat formateador2 = new SimpleDateFormat("dd/mm/yyyy HH:mm");  
         String a1 = convFec(a);
         Date a1D;
         
@@ -107,5 +107,27 @@ public class Crear {
         //devuelve false cuando la fecha ingresada es menor a la de hoy
         return false;
     }
-     
+    public boolean compFec1(String a){
+        
+        SimpleDateFormat formateador2 = new SimpleDateFormat("dd/mm/yyyy HH:mm");  
+        
+        
+        
+        String hoy=formateador2.format(Calendar.getInstance().getTime());
+        Date hoyD;
+
+        try {
+            Date a1D = formateador2.parse(a);
+            hoyD = formateador2.parse(hoy);
+            if(a1D.after(hoyD)){
+                //devuelve true cuando la fecha ingresada es mayor a la de hoy
+                return true;
+            }
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        //devuelve false cuando la fecha ingresada es menor a la de hoy
+        return false;
+    }
 }

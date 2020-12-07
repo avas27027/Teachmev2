@@ -53,7 +53,7 @@ public class Explorar {
             try {
                 //interceptor.invoke(invocation);
                 clasesC.removeIf(n -> (n.getProfesor().equals(usuario)));
-                clasesC.removeIf(n -> (!crea.compFec(n.getHorario())));
+                clasesC.removeIf(n -> (!crea.compFec1(n.getHorario())));
                 model.addAttribute("clases", clasesC);
                 //System.out.println("------------------");
                 System.out.println(clasesC.get(0).nombre);
@@ -70,7 +70,7 @@ public class Explorar {
             // Se imprimen los valores que encuentra, colocar estos valores en el html
             try {
                 clasesC.removeIf(n -> (n.getProfesor().equals(usuario)));
-                clasesC.removeIf(n -> (!crea.compFec(n.getHorario())));
+                clasesC.removeIf(n -> (!crea.compFec1(n.getHorario())));
                 model.addAttribute("clases", clasesC);
             } catch (IndexOutOfBoundsException ex) {
                 // expected
